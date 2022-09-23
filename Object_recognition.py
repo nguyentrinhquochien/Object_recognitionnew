@@ -42,9 +42,13 @@ while True:
      cnts4 = imutils.grab_contours(cnts4)
 
      for c in cnts1:
+        contours, _ = cv2.findContours(mask1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+       
         approx1 = cv2.approxPolyDP(c, 0.02*cv2.arcLength(c, True), True)
-        x = approx1.ravel()[0]
-        y = approx1.ravel()[1]
+        
+        x1 = approx1.ravel()[0]
+        y1 = approx1.ravel()[1]
+        
         font = cv2.FONT_HERSHEY_SIMPLEX
         area1 = cv2.contourArea(c)
 
@@ -67,14 +71,25 @@ while True:
         if area1 > 400:
             cv2.drawContours(frame, [approx1], 0, (0, 0, 0), 5)
             if len(approx1) == 3:
-                cv2.putText(frame, "Tamgiac", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Tamgiac", (x1, y1), font, 1, (0, 0, 0))
             elif len(approx1) == 4:
-                cv2.putText(frame, "Vuong", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Vuong", (x1, y1), font, 1, (0, 0, 0))
             elif 10 < len(approx1) < 20:
-                cv2.putText(frame, "Tron", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Tron", (x1, y1), font, 1, (0, 0, 0))
 
 
      for c in cnts2:
+        
+        contours, _ = cv2.findContours(mask2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        
+        approx2 = cv2.approxPolyDP(c, 0.02*cv2.arcLength(c, True), True)
+        
+        x2 = approx2.ravel()[0]
+        y2 = approx2.ravel()[1]
+       
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        area1 = cv2.contourArea(c)
+    
         area2 = cv2.contourArea(c)
         if area2 > 5000:
 
@@ -90,17 +105,30 @@ while True:
              cv2.putText(frame,"green", (cx-20,cy-20), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255,255,255), 3)
 
         if area2 > 400:
-            cv2.drawContours(frame, [approx1], 0, (0, 0, 0), 5)
-            if len(approx1) == 3:
-                cv2.putText(frame, "Tamgiac", (x, y), font, 1, (0, 0, 0))
+            cv2.drawContours(frame, [approx2], 0, (0, 0, 0), 5)
+            if len(approx2) == 3:
+                cv2.putText(frame, "Tamgiac", (x2, y2), font, 1, (0, 0, 0))
             elif len(approx1) == 4:
-                cv2.putText(frame, "Vuong", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Vuong", (x2, y2), font, 1, (0, 0, 0))
             elif 10 < len(approx1) < 20:
-                cv2.putText(frame, "Tron", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Tron", (x2, y2), font, 1, (0, 0, 0))
 
 
 
      for c in cnts3:
+       
+        contours, _ = cv2.findContours(mask3, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        
+       
+        approx3 = cv2.approxPolyDP(c, 0.02*cv2.arcLength(c, True), True)
+        
+        
+        x3 = approx3.ravel()[0]
+        y3 = approx3.ravel()[1]
+        
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        area1 = cv2.contourArea(c)
+    
         area3 = cv2.contourArea(c)
         if area3 > 5000:
 
@@ -116,18 +144,27 @@ while True:
              cv2.putText(frame,"red", (cx-20,cy-20), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255,255,255), 3)
       
         if area3 > 400:
-            cv2.drawContours(frame, [approx1], 0, (0, 0, 0), 5)
-            if len(approx1) == 3:
-                cv2.putText(frame, "Tamgiac", (x, y), font, 1, (0, 0, 0))
+
+            cv2.drawContours(frame, [approx3], 0, (0, 0, 0), 5)
+            if len(approx3) == 3:
+                cv2.putText(frame, "Tamgiac", (x3, y3), font, 1, (0, 0, 0))
             elif len(approx1) == 4:
-                cv2.putText(frame, "Vuong", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Vuong", (x3, y3), font, 1, (0, 0, 0))
             elif 10 < len(approx1) < 20:
-                cv2.putText(frame, "Tron", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Tron", (x3, y3), font, 1, (0, 0, 0))
 
 
 
  
      for c in cnts4:
+        
+        contours, _ = cv2.findContours(mask4, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        approx4 = cv2.approxPolyDP(c, 0.02*cv2.arcLength(c, True), True)
+        x4 = approx4.ravel()[0]
+        y4 = approx4.ravel()[1]
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        area1 = cv2.contourArea(c)
+    
         area4 = cv2.contourArea(c)
         if area4 > 5000:
 
@@ -143,13 +180,13 @@ while True:
              cv2.putText(frame,"blue", (cx-20,cy-20), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255,255,255), 3)
 
         if area4 > 400:
-            cv2.drawContours(frame, [approx1], 0, (0, 0, 0), 5)
-            if len(approx1) == 3:
-                cv2.putText(frame, "Tamgiac", (x, y), font, 1, (0, 0, 0))
+            cv2.drawContours(frame, [approx4], 0, (0, 0, 0), 5)
+            if len(approx4) == 3:
+                cv2.putText(frame, "Tamgiac", (x4, y4), font, 1, (0, 0, 0))
             elif len(approx1) == 4:
-                cv2.putText(frame, "Vuong", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Vuong", (x4, y4), font, 1, (0, 0, 0))
             elif 10 < len(approx1) < 20:
-                cv2.putText(frame, "Tron", (x, y), font, 1, (0, 0, 0))
+                cv2.putText(frame, "Tron", (x4, y4), font, 1, (0, 0, 0))
      
      
 
